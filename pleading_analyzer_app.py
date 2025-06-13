@@ -2,7 +2,6 @@ import streamlit as st
 import docx2txt
 import pdfplumber
 import spacy
-from spacy.cli import download
 import json
 import csv
 import tempfile
@@ -11,16 +10,7 @@ from io import StringIO
 import pytesseract
 from PIL import Image
 
-import importlib.util
-import subprocess
-import spacy
-
-# Only download if not already present
-if importlib.util.find_spec("en_core_web_sm") is None:
-    subprocess.run(["python", "-m", "spacy", "download", "en_core_web_sm"])
-
 nlp = spacy.load("en_core_web_sm")
-
 
 st.title("Court Pleading Analyzer")
 st.write("Upload a court pleading (PDF or DOCX) to extract key legal information and named entities.")
